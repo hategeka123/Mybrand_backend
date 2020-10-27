@@ -1,15 +1,15 @@
 const joi = require('joi');
 
-const userValidation = (req, res, next) =>{
-    const userSchama = joi.object().keys({
-        name: joi.string().min(5).max(50).required(),
+const signinValidation = (req, res, next) =>{
+    const sigininSchama = joi.object().keys({
         email: joi.string().min(5).max(255).required().email(),
         password: joi.string().min(5).max(255).required()
     })
 
-    const { error } = userSchama.validate(req.body);
+    const { error } = sigininSchama.validate(req.body);
     if (error) return res.status(400).json({errors: error.details[0].message});
     next();
-}
 
-module.exports = userValidation
+} 
+
+module.exports = signinValidation

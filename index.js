@@ -13,7 +13,10 @@ require('dotenv/config');
 
 const postRoute = require('./routes/post');
 
-const user = require('./routes/users');
+const userRoute = require('./routes/users');
+// const signin = require('./routes/users');
+
+// const auth = require('./controller/signin');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -29,7 +32,8 @@ mongoose.connect(URI, {
 
     // ROUTES
 app.use('/api', postRoute);
-app.use('/api', user);
+app.use('/api', userRoute);
+// app.use('/api/', signin),
 // how to start listening the server
 
 app.listen(3000);
