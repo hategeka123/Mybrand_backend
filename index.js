@@ -1,22 +1,17 @@
-const express = require('express');
+import express from 'express';
 
-const bodyParser = require('body-parser')
+import bodyParser from 'body-parser';
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 
-// const bodyParser = require('body-parser');
-
-const app = express();
+const app = express()
+ const PORT = process.env.PORT
 require('dotenv/config');
 // Middleware
 
-const postRoute = require('./routes/post');
-
-const userRoute = require('./routes/users');
-// const signin = require('./routes/users');
-
-// const auth = require('./controller/signin');
+import postRoute from './routes/post';
+import userRoute from './routes/users';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -36,4 +31,8 @@ app.use('/api', userRoute);
 // app.use('/api/', signin),
 // how to start listening the server
 
-app.listen(3000);
+app.listen( PORT, ()=> {
+    console.log(`server is running on ${PORT}...`)
+});
+
+export default app;

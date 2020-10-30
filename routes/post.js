@@ -1,13 +1,15 @@
-const express = require('express');
-
+import express from 'express';
+import postController from '../controller/posts/post';
+import home from '../controller/posts/home';
+import postValidation from '../middleware/postValidation';
+import allPost from '../controller/posts/getPosts';
+import singlePost from '../controller/posts/singlePost';
 const router = express.Router();
-const postController = require('../controller/post');
-const home = require('../controller/home');
-const postValidation = require('../middleware/postValidation');
-
 
 router.get('/', home);
 
 router.post('/posts', postValidation, postController);
+router.get('/getposts', allPost);
+router.get('/getposts/:id', singlePost);
 
-module.exports = router;
+export default router;

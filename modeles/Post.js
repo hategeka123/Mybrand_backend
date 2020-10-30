@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 
 const postSchema = mongoose.Schema({
@@ -6,15 +6,19 @@ const postSchema = mongoose.Schema({
         type: String,
         require:true
     },
+    image: { 
+        type: String
+    },
+
     describition: {
         type: String,
         require:true
     },
-    // image,
+    
     date: {
         type: Date,
         defoult: Date.now
     },
 })
 
-module.exports = mongoose.model('posts', postSchema);
+export default new mongoose.model('Image', postSchema);

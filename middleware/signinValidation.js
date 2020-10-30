@@ -1,4 +1,4 @@
-const joi = require('joi');
+import joi from 'joi';
 
 const signinValidation = (req, res, next) =>{
     const sigininSchama = joi.object().keys({
@@ -12,4 +12,4 @@ const signinValidation = (req, res, next) =>{
 
 } 
 
-module.exports = signinValidation
+export default signinValidation;

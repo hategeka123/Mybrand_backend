@@ -1,4 +1,4 @@
-const joi = require('joi');
+import joi from 'joi';
 
 const userValidation = (req, res, next) =>{
     const userSchama = joi.object().keys({
@@ -12,4 +12,4 @@ const userValidation = (req, res, next) =>{
     next();
 }
 
-module.exports = userValidation
+export default userValidation;

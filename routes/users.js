@@ -1,18 +1,18 @@
 
-const express = require('express');
+import express from 'express';
 // const { required } = require('joi');
 
 const router = express.Router();
 
-const user = require('../controller/user');
-const userValidation = require('../middleware/userValidation');
+import signUp from '../controller/users/user';
+import userValidation from '../middleware/userValidation';
 
-const signin = require('../controller/signin');
-const signinValidation = require('../middleware/signinValidation');
+import signin from '../controller/users/signin';
+import signinValidation from '../middleware/signinValidation';
 
 
-router.post('/users', userValidation, user)
+router.post('/users', userValidation, signUp)
 
 router.post('/signin', signinValidation, signin)
 
-module.exports = router;
+export default router;
