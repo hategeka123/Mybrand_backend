@@ -3,18 +3,18 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import mongoose from 'mongoose';
-
-
+import fileupload from 'express-fileupload'
 const app = express()
  const PORT = process.env.PORT
 require('dotenv/config');
 // Middleware
-
+import myRoute from './routes/route';
 import postRoute from './routes/post';
 import userRoute from './routes/users';
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json({limit: '500mb'}));
+app.use(bodyParser.urlencoded({ limit: '500mb' ,extended: true }))
+app.use(fileupload({useTempFiles:true}))
 
 
 // connet to mongoose
@@ -26,6 +26,7 @@ mongoose.connect(URI, {
 .catch(err => console.log(err.message))
 
     // ROUTES
+ app.use('/api', myRoute);   
 app.use('/api', postRoute);
 app.use('/api', userRoute);
 // app.use('/api/', signin),
