@@ -11,7 +11,7 @@ import signin from '../controller/users/signin';
 import signinValidation from '../middleware/signinValidation';
 
 
-router.post('/users', userValidation, signUp)
+router.post('/signup', userValidation, signUp)
 
 router.post('/signin', signinValidation, signin)
 
