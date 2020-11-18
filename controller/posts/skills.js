@@ -29,7 +29,7 @@ class Skill {
     static getSkills(req, res){
         Skills.find().exec().then((skills) => {
              Skills.estimatedDocumentCount({}, (err, c) =>{ console.log(c)
-            return res.status(200).json({status:200, message:"This is the contacts", count:c, data:skills})
+            return res.status(200).json({status:200, message:"This is the my skills", count:c, data:skills})
             }
             )
         })
