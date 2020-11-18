@@ -9,7 +9,6 @@ const app = express()
 require('dotenv/config');
 // Middleware
 import myRoute from './routes/route';
-import postRoute from './routes/post';
 import userRoute from './routes/users';
 
 app.use(bodyParser.json({limit: '500mb'}));
@@ -27,9 +26,8 @@ mongoose.connect(URI, {
 
     // ROUTES
  app.use('/api', myRoute);   
-app.use('/api', postRoute);
+
 app.use('/api', userRoute);
-// app.use('/api/', signin),
 // how to start listening the server
 
 app.listen( PORT, ()=> {

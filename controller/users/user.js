@@ -11,9 +11,11 @@ const user = async (req, res) => {
     if (!hashedPassword) return res.status(400).json({status: 400, message:'bad request'})
 
     // save newuser in the database
+    let userRole = 'user'
     const newUser = new User ({
         name,
         email,
+        role:userRole,
         password:hashedPassword
     })
      newUser.save().then((data) => {
