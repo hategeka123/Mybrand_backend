@@ -2,8 +2,7 @@ import mongoose from 'mongoose'
 
 const commentSchema = mongoose.Schema({
     name:{ type:String},
-    articleId:{ type:String},
-    description:{ type:String},
+    comment:{ type:String},
     created_at:{ type: Date, default: Date.now }
    
 });
