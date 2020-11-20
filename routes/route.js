@@ -5,7 +5,7 @@ import Comment from '../controller/users/comment'
 import Skill from '../controller/posts/skills'
 import Article from '../controller/posts/article'
 import profile from '../controller/users/profile'
-import valid from '../middleware/schemaValidation'
+// import valid from '../middleware/schemaValidation'
 import postValidation from '../middleware/postValidation';
 const router = express.Router()
 // home page
@@ -13,19 +13,19 @@ const router = express.Router()
 router.get('/', home)
 // contact page
 
-router.post('/newContact', valid.isValid(valid.schema.contact), ContactMessag.createContact )
+router.post('/newContact',  ContactMessag.createContact )
 router.get('/contacts', ContactMessag.getContacts)
 // articles
-router.post('/newArticle', valid.isValid(valid.schema.article), Article.createArticle)
+router.post('/newArticle',  Article.createArticle)
 router.get('/blogs', Article.getAllBlogs)
 router.get('/blogs/:id', Article.singleBlog)
 router.delete('/blogs/:id', Article.deleteBlog)
-router.put('/blogs/:id/edit', Article.updateBlog)
+router.patch('/blogs/:id/edit', Article.updateBlog)
 // postCommet
-router.post('/blog/:id/newComment', valid.isValid(valid.schema.comment), Comment.createComments)
+router.post('/blog/:id/newComment',  Comment.createComments)
 
 // Skills router
-router.post('/addSkills', valid.isValid(valid.schema.skill), Skill.createSkills);
+router.post('/addSkills',  Skill.createSkills);
 router.get('/skills', Skill.getSkills)
 router.get('/skills/:id', Skill.singleSkill);
 router.delete('/skills/:id/delete', Skill.deleteSkills);

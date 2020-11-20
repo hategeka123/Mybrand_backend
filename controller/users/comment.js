@@ -11,7 +11,7 @@ static async createComments(req, res){
         const comment = new Comments({
             name:req.body.name,
             articleId:article._id,
-            description:req.body.description,
+            comment:req.body.comment,
             created_at:new Date()
         })
         console.log(articleId)
