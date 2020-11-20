@@ -18,7 +18,7 @@ static async createComments(req, res){
         comment.save().then( (results) =>{
        res.status(201).json({
            status:201, 
-            message:"Thank you for commenting on this blog",
+            message:"Thank you for commenting on this blogS",
             article:article, 
             comment:results
             })
