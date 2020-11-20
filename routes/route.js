@@ -6,6 +6,9 @@ import Skill from '../controller/posts/skills'
 import Article from '../controller/posts/article'
 import profile from '../controller/users/profile'
 // import valid from '../middleware/schemaValidation'
+
+import postValidation from '../middleware/postValidation';
+
 const router = express.Router()
 // home page
 
@@ -19,7 +22,7 @@ router.post('/newArticle',  Article.createArticle)
 router.get('/blogs', Article.getAllBlogs)
 router.get('/blogs/:id', Article.singleBlog)
 router.delete('/blogs/:id', Article.deleteBlog)
-router.put('/blogs/:id/edit', Article.updateBlog)
+router.patch('/blogs/:id/edit', Article.updateBlog)
 // postCommet
 router.post('/blog/:id/newComment',  Comment.createComments)
 
