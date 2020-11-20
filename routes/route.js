@@ -6,7 +6,9 @@ import Skill from '../controller/posts/skills'
 import Article from '../controller/posts/article'
 import profile from '../controller/users/profile'
 // import valid from '../middleware/schemaValidation'
+
 import postValidation from '../middleware/postValidation';
+
 const router = express.Router()
 // home page
 
