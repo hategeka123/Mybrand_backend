@@ -5,9 +5,10 @@ import Comment from '../controller/users/comment'
 import Skill from '../controller/posts/skills'
 import Article from '../controller/posts/article'
 import profile from '../controller/users/profile'
-// import valid from '../middleware/schemaValidation'
-
-import postValidation from '../middleware/postValidation';
+import contactValidation from '../middleware/contactValidation'
+import postvalidation from '../middleware/postValidation'
+import skillvalidation from '../middleware/skillsValidation'
+import authorization from '../middleware/authorization'
 
 const router = express.Router()
 // home page
@@ -15,26 +16,25 @@ const router = express.Router()
 router.get('/', home)
 // contact page
 
-router.post('/newContact',  ContactMessag.createContact )
-router.get('/contacts', ContactMessag.getContacts)
+router.post('/newContact',   contactValidation, ContactMessag.createContact )
+router.get('/contacts', authorization.userAuth, authorization.isAdmin, ContactMessag.getContacts)
 // articles
-router.post('/newArticle',  Article.createArticle)
-router.get('/blogs', Article.getAllBlogs)
-router.get('/blogs/:id', Article.singleBlog)
-router.delete('/blogs/:id', Article.deleteBlog)
-router.patch('/blogs/:id/edit', Article.updateBlog)
+router.post('/newArticle',  postvalidation, authorization.userAuth, authorization.isAdmin, Article.createArticle)
+router.get('/blogs', authorization.userAuth, Article.getAllBlogs)
+router.get('/blogs/:id', authorization.userAuth, Article.singleBlog)
+router.delete('/blogs/:id/delete', Article.deleteBlog)
+router.patch('/blogs/:id/edit', authorization.isAdmin, Article.updateBlog)
 // postCommet
-router.post('/blog/:id/newComment',  Comment.createComments)
+router.post('/blog/:id/newComment',  authorization.userAuth, Comment.createComments)
 
 // Skills router
-router.post('/addSkills',  Skill.createSkills);
+router.post('/addSkills', skillvalidation, authorization.userAuth, authorization.isAdmin, Skill.createSkills);
 router.get('/skills', Skill.getSkills)
-router.get('/skills/:id', Skill.singleSkill);
-router.delete('/skills/:id/delete', Skill.deleteSkills);
-router.patch('/skills/:id/edit', Skill.updatekills)
+router.delete('/skills/:id/delete', authorization.isAdmin, Skill.deleteSkills);
+router.patch('/skills/:id/edit', authorization.isAdmin, Skill.updatekills)
 
 // user profile
-router.get('/profile', profile.getProfile)
+router.get('/profile', authorization.userAuth, profile.getProfile)
 
 
 export default router

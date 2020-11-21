@@ -13,7 +13,7 @@ const signin = async (req, res) => {
         bcrypt.compare(password, userExist[0].password, (err, result) => {
             if(!result) return res.status(400).json({status:400, message: 'password incorrect'})
             // creating tokens for storing user data
-            jwt.sign({name:userExist[0].name, email:userExist[0].email}, process.env.SECRITY_TOKEN, (error, data) => {
+            jwt.sign({name:userExist[0].name, email:userExist[0].email, role:userExist[0].role}, process.env.SECRITY_TOKEN, (error, data) => {
                 // console.log(data)
                 res.json({status:200, message:'login successful', token:data})
             })
