@@ -22,7 +22,7 @@ router.get('/contacts', authorization.isAdmin, ContactMessag.getContacts)
 router.post('/newArticle',  postvalidation, authorization.userAuth, authorization.isAdmin, Article.createArticle)
 router.get('/blogs', authorization.userAuth, Article.getAllBlogs)
 router.get('/blogs/:id', authorization.userAuth, Article.singleBlog)
-router.delete('/blogs/:id/delete', Article.deleteBlog)
+router.delete('/blogs/:id/delete', authorization.isAdmin, Article.deleteBlog)
 router.patch('/blogs/:id/edit', authorization.isAdmin, Article.updateBlog)
 // postCommet
 router.post('/blog/:id/newComment',  authorization.userAuth, Comment.createComments)
