@@ -22,14 +22,13 @@ export default {
     },
 
     signupWithEmailExist: {
-        email: "hategekamvianney@gmail.com",
-        email: "hategekamvianney@gmail.com",
-        userRole: "admin",
-        password: "123456vianney"
+        name:"tomjson",
+        email:"intwari@gmail.com",
+        password:"12345eded"
     },
     signup: {
+        name: "hategekimana JMV",
         email: "hategekamvianney@gmail.com",
-        userRole: "admin",
         password: "123456vianney"
     },
     login:{
@@ -63,8 +62,8 @@ export default {
         articleImage:"jhgdfjfgsdfggfhdgs",
         description:"descritpion of article"
     },
-//     emptyToken:{},
-//     userToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjY0Y2FlOTNiMDZkNDIwOWVmNGM1Y2EiLCJlbWFpbCI6ImhhYmFqZXVuZXMzNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTYwMDQ0MTExNn0.31kn8vr2IqWEzfw2tks3BD3RYHY2XuYq0XDo8qvvQTI",
-//     userAdminToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjViMTA1NGYwODIzNDFjZTgxNzRjZGYiLCJlbWFpbCI6ImhhYmFqZXVuZXMyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYwMDI2OTA2MX0.9vCXgdQOirqKuGE2ZGz-a8wdfUIyVdXCrzvKZL5ePeo"
+    emptyToken:{},
+   userToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaW50d2FyaSIsImVtYWlsIjoiaW50d2FyaUBnbWFpbC5jb20iLCJpYXQiOjE2MDU4ODI1NTZ9.7AK9Isoci9YaYcuEnvmAC1cTrx8CqlaCZ0qdFH7DcqQ", 
+    userAdminToken:"",
 
-// }
+}
