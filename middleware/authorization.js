@@ -1,4 +1,3 @@
-import { request } from 'chai'
 import jwt from 'jsonwebtoken'
 import Users from '../modeles/user'
 
