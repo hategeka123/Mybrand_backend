@@ -25,9 +25,14 @@ static userAuth (req, res, next){
  }
 }
 static async  isAdmin (req, res, next){
-    const { email} = req.user
-        const user = await Users.find({email})
-console.log(user)
+    const bearer = req.headers.authorization
+    if(!bearer){
+        res.status(401).json({status:401, message: "Access Dinied"})
+    }
+    const bearerToken = bearer.split(' ')[1]
+    const verfiedToken = jwt.verify(bearerToken, process.env.SECRITY_TOKEN);
+    console.log(verfiedToken);
+        const user = await Users.find({email: verfiedToken.email});
 if(user[0].role !== "admin") {
     return res.status(403).json({
         status:403,
