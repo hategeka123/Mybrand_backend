@@ -20,7 +20,7 @@ router.post('/newContact',   contactValidation, ContactMessag.createContact )
 router.get('/contacts', authorization.isAdmin, ContactMessag.getContacts)
 // articles
 router.post('/newArticle',  postvalidation, authorization.userAuth, authorization.isAdmin, Article.createArticle)
-router.get('/blogs', authorization.userAuth, authorization.isAdmin, Article.getAllBlogs)
+router.get('/blogs', authorization.userAuth, Article.getAllBlogs)
 router.get('/blogs/:id', authorization.userAuth, Article.singleBlog)
 router.delete('/blogs/:id/delete', Article.deleteBlog)
 router.patch('/blogs/:id/edit', authorization.isAdmin, Article.updateBlog)

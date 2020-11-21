@@ -4,7 +4,7 @@ import Users from '../modeles/user'
 require('dotenv').config()
 
 class Authorize {
-static userAuth (req, res, next){
+static async userAuth (req, res, next){
  const bearer = req.headers.authorization
  if(!bearer){
      res.status(401).json({status:401, message: "Access Dinied"})
@@ -15,10 +15,13 @@ static userAuth (req, res, next){
      return res.status(401).json({error: "please login first"})
  }
  try{
-    const verfiedToken = jwt.verify(bearerToken, process.env.SECRITY_TOKEN) 
-    req.user = verfiedToken
-    console.log(process.env.SECRITY_TOKEN)
-    return next()
+    const verfiedToken = jwt.verify(bearerToken, process.env.SECRITY_TOKEN);
+    const user = await Users.find({email: verfiedToken.email}); 
+    if(user[0].role === "admin" || user[0].role === "user" ) {
+        return next()
+    }
+    // req.user = verfiedToken
+    // console.log(process.env.SECRITY_TOKEN)
  } catch(error){
      
      return res.status(403).json({error: error.message})
